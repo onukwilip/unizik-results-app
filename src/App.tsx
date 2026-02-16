@@ -1,27 +1,46 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+import React, { useState } from 'react';
+import HeaderCard from './components/HeaderCard';
+import WalletCard from './components/WalletCard';
+import QuickAccess from './components/QuickAccess';
+import CourseCarousel from './components/CourseCarousel';
+import BottomNav from './components/BottomNav';
+import { user, walletBalance, quickAccessItems, courses, bottomNavItems } from './data';
 
-const queryClient = new QueryClient();
+const appStyles: React.CSSProperties = {
+  maxWidth: 900,
+  margin: '0 auto',
+  paddingBottom: 80,
+};
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+const bodyStyles: React.CSSProperties = {
+  padding: '16px',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 20,
+};
+
+const pullText: React.CSSProperties = {
+  textAlign: 'center',
+  fontSize: 12,
+  color: 'var(--muted)',
+  padding: '10px 0 2px',
+};
+
+const App: React.FC = () => {
+  const [activeTab, setActiveTab] = useState('dashboard');
+
+  return (
+    <div style={appStyles}>
+      <HeaderCard user={user} />
+      <p style={pullText}>Pull to refresh</p>
+      <div style={bodyStyles}>
+        <WalletCard balance={walletBalance} />
+        <QuickAccess items={quickAccessItems} />
+        <CourseCarousel courses={courses} />
+      </div>
+      <BottomNav items={bottomNavItems} activeId={activeTab} onSelect={setActiveTab} />
+    </div>
+  );
+};
 
 export default App;
