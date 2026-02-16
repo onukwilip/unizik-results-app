@@ -1,0 +1,33 @@
+.nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #0f0f1a;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 100;
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 12px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.navItemActive {
+  color: var(--purple);
+}
+
+.navLabel {
+  margin-top: 2px;
+}

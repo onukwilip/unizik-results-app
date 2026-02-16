@@ -1,0 +1,49 @@
+:global(:root) {
+  --bg: #121212;
+  --bg-elevated: #1e1e2a;
+  --card: #1a1a2e;
+  --purple: #7c3aed;
+  --purple2: #6d28d9;
+  --purple-light: #a78bfa;
+  --purple-glow: rgba(124, 58, 237, 0.3);
+  --orange: #f97316;
+  --text: #f1f1f1;
+  --text-secondary: #c4c4cc;
+  --muted: #6b6b80;
+  --pill-bg: rgba(255, 255, 255, 0.12);
+  --pill-bg-light: rgba(255, 255, 255, 0.9);
+  --shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+}
+
+:global(*) {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:global(body) {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+:global(button) {
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+:global(button:focus-visible) {
+  outline: 2px solid var(--purple-light);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
